@@ -1,6 +1,6 @@
 import {Component} from 'react'
-import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import {Redirect} from 'react-router-dom'
 
 import './index.css'
 
@@ -22,6 +22,7 @@ class LoginForm extends Component {
 
   onSubmitSuccess = jwtToken => {
     const {history} = this.props
+
     Cookies.set('jwt_token', jwtToken, {
       expires: 30,
     })
@@ -29,6 +30,7 @@ class LoginForm extends Component {
   }
 
   onSubmitFailure = errorMsg => {
+    console.log(errorMsg)
     this.setState({showSubmitError: true, errorMsg})
   }
 
@@ -43,7 +45,6 @@ class LoginForm extends Component {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-
     if (response.ok === true) {
       this.onSubmitSuccess(data.jwt_token)
     } else {
@@ -53,7 +54,6 @@ class LoginForm extends Component {
 
   renderPasswordField = () => {
     const {password} = this.state
-
     return (
       <>
         <label className="input-label" htmlFor="password">
@@ -65,7 +65,6 @@ class LoginForm extends Component {
           className="password-input-field"
           value={password}
           onChange={this.onChangePassword}
-          placeholder="Password"
         />
       </>
     )
@@ -73,7 +72,6 @@ class LoginForm extends Component {
 
   renderUsernameField = () => {
     const {username} = this.state
-
     return (
       <>
         <label className="input-label" htmlFor="username">
@@ -85,7 +83,6 @@ class LoginForm extends Component {
           className="username-input-field"
           value={username}
           onChange={this.onChangeUsername}
-          placeholder="Username"
         />
       </>
     )
@@ -94,27 +91,25 @@ class LoginForm extends Component {
   render() {
     const {showSubmitError, errorMsg} = this.state
     const jwtToken = Cookies.get('jwt_token')
-
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }
-
     return (
       <div className="login-form-container">
         <img
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
-          className="login-website-logo-mobile-img"
+          className="login-website-logo-mobile-image"
           alt="website logo"
         />
         <img
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png"
-          className="login-img"
+          className="login-image"
           alt="website login"
         />
         <form className="form-container" onSubmit={this.submitForm}>
           <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
-            className="login-website-logo-desktop-img"
+            className="login-website-logo-desktop-image"
             alt="website logo"
           />
           <div className="input-container">{this.renderUsernameField()}</div>
