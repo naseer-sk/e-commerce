@@ -9,7 +9,7 @@ const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
   failure: 'FAILURE',
-  inProgress: 'PROGRESS',
+  inProgress: 'IN_PROGRESS',
 }
 
 class PrimeDealsSection extends Component {
@@ -23,8 +23,12 @@ class PrimeDealsSection extends Component {
   }
 
   getPrimeDeals = async () => {
+    this.setState({
+      apiStatus: apiStatusConstants.inProgress,
+    })
+
     const jwtToken = Cookies.get('jwt_token')
-    this.setState({apiStatus: apiStatusConstants.inProgress})
+
     const apiUrl = 'https://apis.ccbp.in/prime-deals'
     const options = {
       headers: {
@@ -47,15 +51,18 @@ class PrimeDealsSection extends Component {
         primeDeals: updatedData,
         apiStatus: apiStatusConstants.success,
       })
-    } else {
-      this.setState({apiStatus: apiStatusConstants.failure})
+    }
+    if (response.status === 401) {
+      this.setState({
+        apiStatus: apiStatusConstants.failure,
+      })
     }
   }
 
   renderPrimeDealsList = () => {
     const {primeDeals} = this.state
     return (
-      <div className="products-list-container">
+      <div>
         <h1 className="primedeals-list-heading">Exclusive Prime Deals</h1>
         <ul className="products-list">
           {primeDeals.map(product => (
@@ -75,7 +82,7 @@ class PrimeDealsSection extends Component {
   )
 
   renderLoadingView = () => (
-    <div className="products-loader-container">
+    <div className="primedeals-loader-container">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
