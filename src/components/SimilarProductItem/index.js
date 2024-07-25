@@ -1,42 +1,31 @@
 import './index.css'
 
-const SimpleProductItem = props => {
-  const addProduct = productData => {
-    const {title, brand, imageUrl, rating, id, price} = productData
+const SimilarProductItem = props => {
+  const {productDetails} = props
+  const {title, brand, imageUrl, rating, price} = productDetails
 
-    return (
-      <li className="product-item" key={id}>
-        <img
-          src={imageUrl}
-          alt={`similar product ${title}`}
-          className="thumbnail"
-        />
-        <h1 className="title">{title}</h1>
-        <p className="brand">by {brand}</p>
-        <div className="product-details">
-          <p className="price">Rs {price}/-</p>
-          <div className="rating-container">
-            <p className="rating">{rating}</p>
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/star-img.png"
-              alt="star"
-              className="star"
-            />
-          </div>
-        </div>
-      </li>
-    )
-  }
-
-  const {productsList} = props
   return (
-    <div className="similar-products-container">
-      <h1 className="similar-products-heading">Similar Products</h1>
-      <ul className="similar-products-list">
-        {productsList.map(eachItem => addProduct(eachItem))}
-      </ul>
-    </div>
+    <li className="similar-product-item">
+      <img
+        src={imageUrl}
+        className="similar-product-image"
+        alt={`similar product ${title}`}
+      />
+      <p className="similar-product-title">{title}</p>
+      <p className="similar-products-brand">by {brand}</p>
+      <div className="similar-product-price-rating-container">
+        <p className="similar-product-price">Rs {price}/-</p>
+        <div className="similar-product-rating-container">
+          <p className="similar-product-rating">{rating}</p>
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/star-img.png"
+            alt="star"
+            className="similar-product-star"
+          />
+        </div>
+      </div>
+    </li>
   )
 }
 
-export default SimpleProductItem
+export default SimilarProductItem

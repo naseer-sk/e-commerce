@@ -1,14 +1,14 @@
 import {Link} from 'react-router-dom'
+
 import './index.css'
 
 const ProductCard = props => {
   const {productData} = props
-  const {title, brand, imageUrl, rating, id, price} = productData
+  const {title, brand, imageUrl, rating, price, id} = productData
 
   return (
-    //   Wrap with Link from react-router-dom
-    <li>
-      <Link to={`/products/${id}`} className="product-item">
+    <Link to={`/products/${id}`} className="link-item">
+      <li className="product-item">
         <img src={imageUrl} alt="product" className="thumbnail" />
         <h1 className="title">{title}</h1>
         <p className="brand">by {brand}</p>
@@ -23,8 +23,8 @@ const ProductCard = props => {
             />
           </div>
         </div>
-      </Link>
-    </li>
+      </li>
+    </Link>
   )
 }
 export default ProductCard

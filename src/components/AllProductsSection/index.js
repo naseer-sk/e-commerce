@@ -91,8 +91,12 @@ class AllProductsSection extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
     const jwtToken = Cookies.get('jwt_token')
-    const {activeOptionId, activeCategoryId, searchInput, activeRatingId} =
-      this.state
+    const {
+      activeOptionId,
+      activeCategoryId,
+      searchInput,
+      activeRatingId,
+    } = this.state
     const apiUrl = `https://apis.ccbp.in/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}&rating=${activeRatingId}`
     const options = {
       headers: {
@@ -157,7 +161,7 @@ class AllProductsSection extends Component {
     <div className="products-error-view-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-products-error-view.png"
-        alt="products failure"
+        alt="all-products-error"
         className="products-failure-img"
       />
       <h1 className="product-failure-heading-text">

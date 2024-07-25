@@ -53,11 +53,11 @@
 }
 
 .home-heading {
+  color: #1e293b;
   font-family: 'Roboto';
   font-weight: bold;
-  margin-top: 0px;
-  font-size: 36px;
-  color: #1e293b;
+  font-size: 30px;
+  line-height: 1.2;
   text-align: center;
 }
 

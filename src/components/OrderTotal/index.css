@@ -1,0 +1,44 @@
+.order-total-container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.order-total-heading {
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: rgb(37, 39, 45);
+  font-weight: light;
+  line-height: 2;
+}
+
+.order-total-text {
+  font-family: 'Roboto';
+  font-weight: 400;
+  color: rgb(47, 50, 55);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.order-total-money {
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.order-total-checkout-btn {
+  background-color:#0967d2;
+  font-family: 'Roboto';
+  font-weight: light;
+  color: #ffffff;
+  font-size: 14px;
+  border-width: 0px;
+  border-radius: 4px;
+  padding: 5px;
+  height: 30px;
+  width: 100%;
+}
+
